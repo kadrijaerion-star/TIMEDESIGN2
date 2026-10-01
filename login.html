@@ -1,0 +1,526 @@
+    <!DOCTYPE html>
+<html lang="sq">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>TimeDesign | Login</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        #eee4d8,
+        #cdb79f
+    );
+
+}
+
+.login-box{
+
+    width:420px;
+
+    max-width:92%;
+
+    background:white;
+
+    padding:45px;
+
+    border-radius:10px;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.15);
+
+}
+
+.logo{
+
+    text-align:center;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+}
+
+.logo span{
+
+    font-weight:normal;
+
+}
+
+.title{
+
+    text-align:center;
+
+    color:#777;
+
+    margin-bottom:30px;
+
+}
+
+.tabs{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+.tabs button{
+
+    flex:1;
+
+    padding:13px;
+
+    border:1px solid #ddd;
+
+    background:#f5f5f5;
+
+    cursor:pointer;
+
+    border-radius:5px;
+
+    font-weight:bold;
+
+}
+
+.tabs button.active{
+
+    background:#171717;
+
+    color:white;
+
+}
+
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+input{
+
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid #ddd;
+
+    border-radius:5px;
+
+    font-size:14px;
+
+    outline:none;
+
+}
+
+input:focus{
+
+    border-color:#987452;
+
+}
+
+.login-button{
+
+    border:0;
+
+    padding:14px;
+
+    background:#171717;
+
+    color:white;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+}
+
+.login-button:hover{
+
+    background:#987452;
+
+}
+
+.back{
+
+    display:block;
+
+    text-align:center;
+
+    margin-top:20px;
+
+    color:#777;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+}
+
+.message{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    color:#b33;
+
+    font-size:14px;
+
+}
+
+.demo{
+
+    margin-top:20px;
+
+    padding:12px;
+
+    background:#f5f2ee;
+
+    border-radius:5px;
+
+    font-size:12px;
+
+    color:#666;
+
+    text-align:center;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-box">
+
+
+    <div class="logo">
+
+        Time<span>Design</span>
+
+    </div>
+
+
+    <p class="title">
+
+        Hyr në llogarinë tënde
+
+    </p>
+
+
+    <!-- TABS -->
+
+    <div class="tabs">
+
+        <button
+        id="clientTab"
+        class="active"
+        onclick="showClient()">
+
+            Klient
+
+        </button>
+
+
+        <button
+        id="adminTab"
+        onclick="showAdmin()">
+
+            Admin
+
+        </button>
+
+    </div>
+
+
+    <!-- CLIENT LOGIN -->
+
+    <form
+    id="clientForm"
+    onsubmit="clientLogin(event)">
+
+
+        <input
+        id="clientEmail"
+        type="email"
+        placeholder="Email"
+        required>
+
+
+        <input
+        id="clientPassword"
+        type="password"
+        placeholder="Fjalëkalimi"
+        required>
+
+
+        <button
+        class="login-button"
+        type="submit">
+
+            Hyr si Klient
+
+        </button>
+
+
+    </form>
+
+
+    <!-- ADMIN LOGIN -->
+
+    <form
+    id="adminForm"
+    class="hidden"
+    onsubmit="adminLogin(event)">
+
+
+        <input
+        id="adminUsername"
+        type="text"
+        placeholder="Përdoruesi"
+        required>
+
+
+        <input
+        id="adminPassword"
+        type="password"
+        placeholder="Fjalëkalimi"
+        required>
+
+
+        <button
+        class="login-button"
+        type="submit">
+
+            Hyr si Admin
+
+        </button>
+
+
+    </form>
+
+
+    <div
+    id="message"
+    class="message">
+    </div>
+
+
+    <div class="demo">
+
+        <b>Demo Admin</b><br><br>
+
+        Përdoruesi:
+        <b>admin</b>
+
+        <br>
+
+        Fjalëkalimi:
+        <b>admin123</b>
+
+    </div>
+
+
+    <a
+    href="index.html"
+    class="back">
+
+        ← Kthehu në Ballinë
+
+    </a>
+
+
+</div>
+
+
+<script>
+
+
+/* SHFAQ LOGIN KLIENT */
+
+function showClient(){
+
+    document
+    .getElementById("clientForm")
+    .classList
+    .remove("hidden");
+
+
+    document
+    .getElementById("adminForm")
+    .classList
+    .add("hidden");
+
+
+    document
+    .getElementById("clientTab")
+    .classList
+    .add("active");
+
+
+    document
+    .getElementById("adminTab")
+    .classList
+    .remove("active");
+
+
+    document
+    .getElementById("message")
+    .innerHTML="";
+
+}
+
+
+/* SHFAQ LOGIN ADMIN */
+
+function showAdmin(){
+
+    document
+    .getElementById("clientForm")
+    .classList
+    .add("hidden");
+
+
+    document
+    .getElementById("adminForm")
+    .classList
+    .remove("hidden");
+
+
+    document
+    .getElementById("clientTab")
+    .classList
+    .remove("active");
+
+
+    document
+    .getElementById("adminTab")
+    .classList
+    .add("active");
+
+
+    document
+    .getElementById("message")
+    .innerHTML="";
+
+}
+
+
+/* LOGIN KLIENT */
+
+function clientLogin(event){
+
+    event.preventDefault();
+
+
+    localStorage.setItem(
+        "TimeDesignClient",
+        "true"
+    );
+
+
+    window.location.href =
+        "klient.html";
+
+}
+
+
+/* LOGIN ADMIN */
+
+function adminLogin(event){
+
+    event.preventDefault();
+
+
+    const username =
+        document
+        .getElementById("adminUsername")
+        .value;
+
+
+    const password =
+        document
+        .getElementById("adminPassword")
+        .value;
+
+
+    if(
+        username === "admin"
+        &&
+        password === "admin123"
+    ){
+
+        localStorage.setItem(
+            "TimeDesignAdmin",
+            "true"
+        );
+
+
+        window.location.href =
+            "admin.html";
+
+    }
+
+    else{
+
+        document
+        .getElementById("message")
+        .innerHTML =
+        "❌ Përdoruesi ose fjalëkalimi është gabim.";
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
